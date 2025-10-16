@@ -1,0 +1,11 @@
+C:\Users\Administrator\source\repos\MetalSlugXTrainer\MetalSlugXTrainer\bin\Debug\MetalSlugXTrainer.exe.config
+C:\Users\Administrator\source\repos\MetalSlugXTrainer\MetalSlugXTrainer\bin\Debug\MetalSlugXTrainer.exe
+C:\Users\Administrator\source\repos\MetalSlugXTrainer\MetalSlugXTrainer\bin\Debug\MetalSlugXTrainer.pdb
+C:\Users\Administrator\source\repos\MetalSlugXTrainer\MetalSlugXTrainer\obj\Debug\MetalSlugXTrainer.csproj.AssemblyReference.cache
+C:\Users\Administrator\source\repos\MetalSlugXTrainer\MetalSlugXTrainer\obj\Debug\MetalSlugXTrainer.Form1.resources
+C:\Users\Administrator\source\repos\MetalSlugXTrainer\MetalSlugXTrainer\obj\Debug\MetalSlugXTrainer.Properties.Resources.resources
+C:\Users\Administrator\source\repos\MetalSlugXTrainer\MetalSlugXTrainer\obj\Debug\MetalSlugXTrainer.csproj.GenerateResource.cache
+C:\Users\Administrator\source\repos\MetalSlugXTrainer\MetalSlugXTrainer\obj\Debug\MetalSlugXTrainer.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\MetalSlugXTrainer\MetalSlugXTrainer\obj\Debug\MetalSlugXTrainer.exe
+C:\Users\Administrator\source\repos\MetalSlugXTrainer\MetalSlugXTrainer\obj\Debug\MetalSlugXTrainer.pdb
+C:\Users\Administrator\source\repos\MetalSlugXTrainer\MetalSlugXTrainer\obj\Debug\MetalSlugXTrainer.exe.config
