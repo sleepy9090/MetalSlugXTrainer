@@ -9,12 +9,10 @@
  */
 using System;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows.Forms;
 using Timer = System.Windows.Forms.Timer;
 
@@ -112,6 +110,7 @@ namespace MetalSlugXTrainer
         #region Fields
 
         private Process game;
+
         private IntPtr hProc = IntPtr.Zero;
         private IntPtr levelTimerAddressGlobal = IntPtr.Zero;
         private IntPtr continueTimerAddressGlobal = IntPtr.Zero;
@@ -503,19 +502,19 @@ namespace MetalSlugXTrainer
 
         #region Get Pointer Methods
 
-        private IntPtr ReadPointerInt64(IntPtr hProcess, IntPtr address, int offset)
+        private IntPtr ReadPointerInt16(IntPtr hProcess, IntPtr address, int offset)
         {
-            byte[] buffer = new byte[8];
+            byte[] buffer = new byte[4];
             ReadProcessMemory(hProcess, address, buffer, buffer.Length, out int bytesRead);
-            IntPtr ptr = (IntPtr)BitConverter.ToInt64(buffer, 0);
+            IntPtr ptr = (IntPtr)BitConverter.ToInt16(buffer, 0);
             return IntPtr.Add(ptr, offset);
         }
 
-        private IntPtr ReadPointerUInt64(IntPtr hProcess, IntPtr address, int offset)
+        private IntPtr ReadPointerUInt16(IntPtr hProcess, IntPtr address, int offset)
         {
-            byte[] buffer = new byte[8];
+            byte[] buffer = new byte[4];
             ReadProcessMemory(hProcess, address, buffer, buffer.Length, out int bytesRead);
-            IntPtr ptr = (IntPtr)BitConverter.ToUInt64(buffer, 0);
+            IntPtr ptr = (IntPtr)BitConverter.ToUInt16(buffer, 0);
             return IntPtr.Add(ptr, offset);
         }
 
@@ -535,19 +534,19 @@ namespace MetalSlugXTrainer
             return IntPtr.Add(ptr, offset);
         }
 
-        private IntPtr ReadPointerInt16(IntPtr hProcess, IntPtr address, int offset)
+        private IntPtr ReadPointerInt64(IntPtr hProcess, IntPtr address, int offset)
         {
-            byte[] buffer = new byte[4];
+            byte[] buffer = new byte[8];
             ReadProcessMemory(hProcess, address, buffer, buffer.Length, out int bytesRead);
-            IntPtr ptr = (IntPtr)BitConverter.ToInt16(buffer, 0);
+            IntPtr ptr = (IntPtr)BitConverter.ToInt64(buffer, 0);
             return IntPtr.Add(ptr, offset);
         }
 
-        private IntPtr ReadPointerUInt16(IntPtr hProcess, IntPtr address, int offset)
+        private IntPtr ReadPointerUInt64(IntPtr hProcess, IntPtr address, int offset)
         {
-            byte[] buffer = new byte[4];
+            byte[] buffer = new byte[8];
             ReadProcessMemory(hProcess, address, buffer, buffer.Length, out int bytesRead);
-            IntPtr ptr = (IntPtr)BitConverter.ToUInt16(buffer, 0);
+            IntPtr ptr = (IntPtr)BitConverter.ToUInt64(buffer, 0);
             return IntPtr.Add(ptr, offset);
         }
 
