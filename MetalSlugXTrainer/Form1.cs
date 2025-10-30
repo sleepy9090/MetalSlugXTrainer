@@ -72,6 +72,11 @@ namespace MetalSlugXTrainer
 
         private const int OFFSET_LEVEL_TIMER = 0x13DF;
         private const int OFFSET_CONTINUE_TIMER = 0x13E0; //13E1, 
+        private const int OFFSET_MISSION_COMPLETE = 0x0000;
+        private const int OFFSET_LEVEL_SELECT_1 = 0x0000;
+        private const int OFFSET_LEVEL_SELECT_2 = 0x0000;
+        private const int OFFSET_DEBUG_1 = 0x0000;
+        private const int OFFSET_DEBUG_2 = 0x0000;
 
         // Player 1
         private const int OFFSET_P1_CREDITS_COUNT = 0x34;
@@ -114,6 +119,11 @@ namespace MetalSlugXTrainer
         private IntPtr hProc = IntPtr.Zero;
         private IntPtr levelTimerAddressGlobal = IntPtr.Zero;
         private IntPtr continueTimerAddressGlobal = IntPtr.Zero;
+        private IntPtr missionCompleteAddressGlobal = IntPtr.Zero;
+        private IntPtr levelSelect1AddressGlobal = IntPtr.Zero;
+        private IntPtr levelSelect2AddressGlobal = IntPtr.Zero;
+        private IntPtr debug1AddressGlobal = IntPtr.Zero;
+        private IntPtr debug2AddressGlobal = IntPtr.Zero;
         private IntPtr livesCountP1AddressGlobal = IntPtr.Zero;
         private IntPtr livesCountP1CompleteAddressGlobal = IntPtr.Zero;
         private IntPtr livesCountP2AddressGlobal = IntPtr.Zero;
@@ -589,8 +599,11 @@ namespace MetalSlugXTrainer
 
         private void WriteByte(IntPtr hProcess, IntPtr address, byte value)
         {
+            // Since bitconverter getbytes with a byte value handles it as a short (no overload for byte), we get 2 bytes back as a short, but we only want the first
+            // https://learn.microsoft.com/en-us/dotnet/api/system.bitconverter.getbytes?view=net-9.0#system-bitconverter-getbytes(system-int16)
             byte[] buffer = BitConverter.GetBytes(value);
-            WriteProcessMemory(hProcess, address, buffer, buffer.Length, out int bytesWritten);
+            //WriteProcessMemory(hProcess, address, buffer, buffer.Length, out int bytesWritten);
+            WriteProcessMemory(hProcess, address, buffer, buffer.Length - 1, out int bytesWritten);
         }
 
         private uint ReadUInt16(IntPtr hProcess, IntPtr address)
@@ -640,21 +653,26 @@ namespace MetalSlugXTrainer
                 string logEntry = $"[Metal Slug X Process {game.ProcessName} found in {game} with PID: {game.Id}]";
                 logEntry += Environment.NewLine;
                 logEntry += $"Start Time: {game.StartTime}";
-                logEntry += Environment.NewLine;
-                //logEntry += $"Total Processor Time: {game.TotalProcessorTime}";
-                logEntry += $"Physical Memory Usage (MB): {game.WorkingSet64 / (1024 * 1024)}";
-                logEntry += Environment.NewLine;
-                logEntry += "---------------------------------------------------";
-                logEntry += Environment.NewLine;
-
                 if (logEntry != previousLogEntry)
                 {
-                    textBoxLog.AppendText(logEntry + Environment.NewLine);
                     previousLogEntry = logEntry;
+
+                    textBoxLog.AppendText(logEntry + Environment.NewLine);
+                    textBoxLog.AppendText($"Total Processor Time: {game.TotalProcessorTime}"
+                        + Environment.NewLine);
+                    textBoxLog.AppendText($"Physical Memory Usage (MB): {game.WorkingSet64 / (1024 * 1024)}"
+                        + Environment.NewLine
+                        + "---------------------------------------------------"
+                        + Environment.NewLine);
                 }
 
                 levelTimerAddressGlobal              = GetOffsetAddress(hProc, BASE_ADDRESS_1, OFFSET_LEVEL_TIMER                );
                 continueTimerAddressGlobal           = GetOffsetAddress(hProc, BASE_ADDRESS_1, OFFSET_CONTINUE_TIMER             );
+                missionCompleteAddressGlobal         = GetOffsetAddress(hProc, BASE_ADDRESS_1, OFFSET_MISSION_COMPLETE           );
+                levelSelect1AddressGlobal            = GetOffsetAddress(hProc, BASE_ADDRESS_1, OFFSET_LEVEL_SELECT_1             );
+                levelSelect2AddressGlobal            = GetOffsetAddress(hProc, BASE_ADDRESS_1, OFFSET_LEVEL_SELECT_2             );
+                debug1AddressGlobal                  = GetOffsetAddress(hProc, BASE_ADDRESS_1, OFFSET_DEBUG_1                    );
+                debug2AddressGlobal                  = GetOffsetAddress(hProc, BASE_ADDRESS_1, OFFSET_DEBUG_2                    );
 
                 livesCountP1AddressGlobal            = GetOffsetAddress(hProc, BASE_ADDRESS_1, OFFSET_P1_LIVES_COUNT             );
                 livesCountP1CompleteAddressGlobal    = GetOffsetAddress(hProc, BASE_ADDRESS_1, OFFSET_P1_LIVES_COUNT_COMPLETE    );
@@ -690,17 +708,10 @@ namespace MetalSlugXTrainer
                 {
                     try
                     {
-                        byte tempByte = 0;
-                        if (int.TryParse(DisplayByteValue(hProc, continueTimerAddressGlobal, BASE_ADDRESS_1, OFFSET_CONTINUE_TIMER), out int continueTimer))
-                        {
-                            tempByte = Convert.ToByte(continueTimer);
-                        }
                         if (int.TryParse(textBoxLevelTimerWrite.Text, out int levelTimer)
                             && (levelTimer >= 0 && levelTimer <= 255))
                         {
                             WriteByte(hProc, levelTimerAddressGlobal, Convert.ToByte(levelTimer));
-                            // Write existing Continue Timer Count as it gets overwritten
-                            WriteByte(hProc, continueTimerAddressGlobal, tempByte);
                         }
                         else
                         {
@@ -869,17 +880,10 @@ namespace MetalSlugXTrainer
                 {
                     try
                     {
-                        byte tempByte = 0;
-                        if (int.TryParse(DisplayByteValue(hProc, powsRescuedP2AddressGlobal, BASE_ADDRESS_2, OFFSET_P2_POWS_RESCUED), out int currentPowsRescuedP2))
-                        {
-                            tempByte = Convert.ToByte(currentPowsRescuedP2);
-                        }
                         if (int.TryParse(textBoxP1POWsRescuedWrite.Text, out int powsRescued)
                             && (powsRescued >= 0 && powsRescued <= 255))
                         {
                             WriteByte(hProc, powsRescuedP1AddressGlobal, Convert.ToByte(powsRescued));
-                            // Write existing P2 POW Rescued Count as P1 POW Rescued Count is the High Byte and overwrites the P2 POW Rescued Count (Low Byte)
-                            WriteByte(hProc, powsRescuedP2AddressGlobal, tempByte);
                         }
                         else
                         {
@@ -952,17 +956,10 @@ namespace MetalSlugXTrainer
                 {
                     try
                     {
-                        byte tempByte = 0;
-                        if (int.TryParse(DisplayByteValue(hProc, bombCountP1AddressGlobal, BASE_ADDRESS_1, OFFSET_P1_BOMB_COUNT), out int currentBombCountP1))
-                        {
-                            tempByte = Convert.ToByte(currentBombCountP1);
-                        }
                         if (int.TryParse(textBoxP2BombCountWrite.Text, out int bombCount)
                             && (bombCount >= 0 && bombCount <= 255))
                         {
                             WriteByte(hProc, bombCountP2AddressGlobal, Convert.ToByte(bombCount));
-                            // Write existing P1 Bomb Count as P2 Bomb Count is the High Byte and overwrites the P1 Bomb Count (Low Byte)
-                            WriteByte(hProc, bombCountP1AddressGlobal, tempByte);
                         }
                         else
                         {
@@ -1091,16 +1088,10 @@ namespace MetalSlugXTrainer
                 {
                     try
                     {
-                        byte tempByte = 0;
-                        if (int.TryParse(DisplayByteValue(hProc, creditsCountP2AddressGlobal, BASE_ADDRESS_2, OFFSET_P2_CREDITS_COUNT), out int currentCreditsCountP2))
-                        {
-                            tempByte = Convert.ToByte(currentCreditsCountP2);
-                        }
                         if (int.TryParse(textBoxP1CreditsCountWrite.Text, out int creditsCount)
                             && (creditsCount >= 0 && creditsCount <= 255))
                         {
                             WriteByte(hProc, creditsCountP1AddressGlobal, Convert.ToByte(creditsCount));
-                            WriteByte(hProc, creditsCountP2AddressGlobal, tempByte);
                         }
                         else
                         {
@@ -1121,17 +1112,10 @@ namespace MetalSlugXTrainer
                 {
                     try
                     {
-                        //byte tempByte = 0;
-                        //if (int.TryParse(DisplayByteValue(hProc, creditsCountP1AddressGlobal, BASE_ADDRESS_1, OFFSET_P1_CREDITS_COUNT), out int currentCreditsCountP1))
-                        //{
-                        //    tempByte = Convert.ToByte(currentCreditsCountP1);
-                        //}
                         if (int.TryParse(textBoxP2CreditsCountWrite.Text, out int creditsCount)
                             && (creditsCount >= 0 && creditsCount <= 255))
                         {
                             WriteByte(hProc, creditsCountP2AddressGlobal, Convert.ToByte(creditsCount));
-                            // Write existing P1 Credits Count as P2 Credits Count is the High Byte and overwrites the P1 Credits Count (Low Byte)
-                            //WriteByte(hProc, creditsCountP1AddressGlobal, tempByte);
                         }
                         else
                         {
@@ -1167,7 +1151,7 @@ namespace MetalSlugXTrainer
                         {
                             WriteUInt16(hProc, ammoCountP1AddressGlobal, ammoCount);
                             // Write existing P2 Ammo Count as P1 Ammo Count is the High Byte and overwrites the P2 Ammo Count (Low Byte)
-                            WriteUInt16(hProc, ammoCountP2AddressGlobal, tempInt);
+                            //WriteUInt16(hProc, ammoCountP2AddressGlobal, tempInt);
                         }
                         else
                         {
@@ -1272,7 +1256,6 @@ namespace MetalSlugXTrainer
                     
                     try
                     {
-                        //string value = ((KeyValuePair<int, string>)comboBoxP1WeaponTypeWrite.SelectedItem).Value;
                         WriteByte(hProc, weaponTypeP1AddressGlobal, Convert.ToByte(((KeyValuePair<int, string>)comboBoxP1WeaponTypeWrite.SelectedItem).Key));
                     }
                     catch (Exception ex)
@@ -1302,18 +1285,7 @@ namespace MetalSlugXTrainer
                 {
                     try
                     {
-                        // 2 bytes hold P1 and P2 weapon types, changing P2 sets P1 to 0, they probably share the same 16-bit value. P1 is the upper byte, P2 is the lower byte
-                        // Get the current P1 weapon type.
-                        byte tempByte = 0;
-                        if (int.TryParse(DisplayByteValue(hProc, weaponTypeP1AddressGlobal, BASE_ADDRESS_1, OFFSET_P1_WEAPON_TYPE), out int currentWeaponTypeP1))
-                        {
-                            tempByte = Convert.ToByte(currentWeaponTypeP1);
-                        }
-                        
-                        // Write new P2 weapon type
                         WriteByte(hProc, weaponTypeP2AddressGlobal, Convert.ToByte(((KeyValuePair<int, string>)comboBoxP2WeaponTypeWrite.SelectedItem).Key));
-                        // Write existing P1 Weapon Type as P2 Weapon Type is the High Byte and overwrites the P1 Weapon Type (Low Byte)
-                        WriteByte(hProc, weaponTypeP1AddressGlobal, tempByte);
                     }
                     catch (Exception ex)
                     {
@@ -1375,14 +1347,7 @@ namespace MetalSlugXTrainer
                 {
                     try
                     {
-                        byte tempByte = 0;
-                        if (int.TryParse(DisplayByteValue(hProc, bombTypeP1AddressGlobal, BASE_ADDRESS_1, OFFSET_P1_BOMB_TYPE), out int currentBombTypeP1))
-                        {
-                            tempByte = Convert.ToByte(currentBombTypeP1);
-                        }
                         WriteByte(hProc, bombTypeP2AddressGlobal, Convert.ToByte(((KeyValuePair<int, string>)comboBoxP2BombTypeWrite.SelectedItem).Key));
-                        // Write existing P1 Bomb Type as P2 Bomb Type is the High Byte and overwrites the P1 Bomb Type (Low Byte)
-                        WriteByte(hProc, bombTypeP1AddressGlobal, tempByte);
                     }
                     catch (Exception ex)
                     {
