@@ -8,6 +8,7 @@
  *
  */
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -170,6 +171,7 @@ namespace MetalSlugXTrainer
 
             textBoxLog.Text = "Metal Slug X (GOG Version) Trainer by sLeEpY9090" + Environment.NewLine;
 
+            PopulateLevels();
             PopulateWeaponTypes();
             PopulateBombTypes();
             PopulateCharacters();
@@ -184,6 +186,100 @@ namespace MetalSlugXTrainer
         }
 
         #region Form Setup Methods
+
+        private void PopulateLevels()
+        {
+            Dictionary<int, string> levelsDictionary = new Dictionary<int, string>
+            {
+                {  0, "1:1 Desert"                                   },
+                {  1, "1:2 Carpet shop"                              },
+                {  2, "1:3 Return from carpet shop"                  },
+                {  3, "1:4 Desert loop"                              },
+                {  4, "1:5 Return from desert loop"                  },
+                {  5, "2:1 Ruins entrance"                           },
+                {  6, "2:2 Ruins location"                           },
+                {  7, "2:3 Ruins tower"                              },
+                {  8, "2:4 Ruins corridor"                           },
+                {  9, "2:5 Return from the corridor"                 },
+                { 10, "2:6 Suspended ceiling"                        },
+                { 11, "2:7 Return from the suspended ceiling"        },
+                { 12, "2:8 Quicksand"                                },
+                { 13, "2:9 Return from the quicksand"                },
+                { 14, "2:A Chamber of relics"                        },
+                { 15, "2:B Return from chamber"                      },
+                { 16, "2:C Ruins elevator"                           },
+                { 17, "2:D Return from the elevator"                 },
+                { 18, "3:1 Train"                                    },
+                { 19, "3:2 Into the sky..."                          },
+                { 20, "3:3 Return from the sky"                      },
+                { 21, "4:1 Hong Kong shopping district"              },
+                { 22, "4:2 Hong Kong sewers"                         },
+                { 23, "4:3 Return from the sewers"                   },
+                { 24, "4:4 Maneater den"                             },
+                { 25, "4:5 Return from the den"                      },
+                { 26, "5:1 New York Main Street"                     },
+                { 27, "5:2 New York subway"                          },
+                { 28, "5:3 New York sewers"                          },
+                { 29, "5:4 New York underground"                     },
+                { 30, "6:1 The wave bridge"                          },
+                { 31, "6:2 Arctic base"                              },
+                { 32, "6:3 Last boss"                                },
+                { 33, "6:4 The abyssal tour"                         },
+                { 34, "6:5 Return from the abyssal tour"             },
+                { 35, "7:1 Jungle"                                   },
+                { 36, "7:2 Inside the Middle-Son"                    },
+                { 37, "7:3 Return from the Middle-Son "              },
+                { 38, "7:4 Rock staircase"                           },
+                { 39, "7:5 Return from the rock staircase"           },
+                { 40, "7:6 Japanese Soldiers who Kept Living, Part 1"},
+                { 41, "7:7 Return from hideout part 1"               },
+                { 42, "7:8 Japanese Soldiers who Kept Living, Part 2"},
+                { 43, "7:9 Return from hideout part 2"               },
+                { 44, "8:1 A Wish For The Morning Glow"              },
+                { 45, "8:2 Rooftops"                                 },
+                { 46, "8:3 Return from the rooftops"                 },
+                { 47, "8:4 Other side of the whirling tides"         },
+                { 48, "8:5 Return from the whirling tides"           },
+                { 49, "9:1 Death Valley"                             },
+                { 50, "9:2 Wine storage"                             },
+                { 51, "9:3 Return from wine storage"                 },
+                { 52, "9:4 Through the woods, go go go!"             },
+                { 53, "9:5 Return from woods"                        },
+                { 54, "9:6 Japanese Soldiers who Kept Living, Part 3"},
+                { 55, "9:7 Return from hideout part 3"               },
+                { 56, "9:8 Cave exit"                                },
+                { 57, "9:9 Return from the cave"                     },
+                { 58, "A:1 Iron Cavalrymen In Hell"                  },
+                { 59, "A:2 Bunker 1"                                 },
+                { 60, "A:3 Return from bunker 1"                     },
+                { 61, "A:4 Drum-can Zone"                            },
+                { 62, "A:5 Return from drum-can zone"                },
+                { 63, "A:6 Bunker 2"                                 },
+                { 64, "A:7 Return from bunker 2"                     },
+                { 65, "A:8 Secret factory"                           },
+                { 66, "A:9 Return from factory"                      },
+                { 67, "B:1 The City Under Despotism"                 },
+                { 68, "C:1 The Memorial Sea"                         },
+                { 69, "C:2 Great jumping ostriches"                  },
+                { 70, "C:3 Return from ostrich area"                 },
+                { 71, "D:1 End Roll"                                 },
+                { 72, "TEST1 for ANDY THE WIZARD"                    },
+                { 73, "TEST2 for MEEHER"                             },
+                { 74, "TEST3 for YOKO-SHU"                           },
+                { 75, "TEST4 for Namihira"                           },
+                { 76, "TEST5 for Arita"                              },
+                { 77, "TEST6 for NISHINO"                            },
+                { 78, "TEST7 for NAKATUKA"                           },
+                { 79, "TEST8 for TAGUCHI"                            },
+            };
+
+            comboBoxLevelSelect.Items.Clear();
+            comboBoxLevelSelect.DataSource = new BindingSource(levelsDictionary, null);
+            comboBoxLevelSelect.DisplayMember = "Value";
+            comboBoxLevelSelect.ValueMember = "Key";
+            comboBoxLevelSelect.SelectedIndex = 0;
+
+        }
 
         private void PopulateWeaponTypes()
         {
@@ -1438,6 +1534,427 @@ namespace MetalSlugXTrainer
 
             }
         }
+
+        #region Mission Complete
+
+        private void ButtonMissionCommplete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                WriteByte(hProc, missionCompleteAddressGlobal, 255);
+            }
+            catch (Exception ex)
+            {
+                textBoxLog.AppendText("An error occurred setting Mission Complete."
+                    + Environment.NewLine
+                    + "Exception: "
+                    + ex);
+            }
+        }
+
+
+        #endregion
+
+        #region Level Select
+
+        private void ButtonLevelSelect_Click(object sender, EventArgs e)
+        {
+            byte eD7A;
+            byte eD7B;
+
+            switch (comboBoxLevelSelect.SelectedIndex)
+            {
+                case 0:
+                    eD7A = 0;
+                    eD7B = 0;
+                    break;
+                case 1:
+                    eD7A = 1;
+                    eD7B = 0;
+                    break;
+                case 2:
+                    eD7A = 2;
+                    eD7B = 0;
+                    break;
+                case 3:
+                    eD7A = 3;
+                    eD7B = 0;
+                    break;
+                case 4:
+                    eD7A = 4;
+                    eD7B = 0;
+                    break;
+                case 5:
+                    eD7A = 5;
+                    eD7B = 0;
+                    break;
+                case 6:
+                    eD7A = 6;
+                    eD7B = 0;
+                    break;
+                case 7:
+                    eD7A = 0;
+                    eD7B = 1;
+                    break;
+                case 8:
+                    eD7A = 1;
+                    eD7B = 1;
+                    break;
+                case 9:
+                    eD7A = 2;
+                    eD7B = 1;
+                    break;
+                case 10:
+                    eD7A = 3;
+                    eD7B = 1;
+                    break;
+                case 11:
+                    eD7A = 4;
+                    eD7B = 1;
+                    break;
+                case 12:
+                    eD7A = 5;
+                    eD7B = 1;
+                    break;
+                case 13:
+                    eD7A = 6;
+                    eD7B = 1;
+                    break;
+                case 14:
+                    eD7A = 7;
+                    eD7B = 1;
+                    break;
+                case 15:
+                    eD7A = 0;
+                    eD7B = 2;
+                    break;
+                case 16:
+                    eD7A = 1;
+                    eD7B = 2;
+                    break;
+                case 17:
+                    eD7A = 2;
+                    eD7B = 2;
+                    break;
+                case 18:
+                    eD7A = 3;
+                    eD7B = 2;
+                    break;
+                case 19:
+                    eD7A = 4;
+                    eD7B = 2;
+                    break;
+                case 20:
+                    eD7A = 5;
+                    eD7B = 2;
+                    break;
+                case 21:
+                    eD7A = 6;
+                    eD7B = 2;
+                    break;
+                case 22:
+                    eD7A = 0;
+                    eD7B = 3;
+                    break;
+                case 23:
+                    eD7A = 1;
+                    eD7B = 3;
+                    break;
+                case 24:
+                    eD7A = 2;
+                    eD7B = 3;
+                    break;
+                case 25:
+                    eD7A = 3;
+                    eD7B = 3;
+                    break;
+                case 26:
+                    eD7A = 4;
+                    eD7B = 3;
+                    break;
+                case 27:
+                    eD7A = 5;
+                    eD7B = 3;
+                    break;
+                case 28:
+                    eD7A = 6;
+                    eD7B = 3;
+                    break;
+                case 29:
+                    eD7A = 7;
+                    eD7B = 3;
+                    break;
+                case 30:
+                    eD7A = 8;
+                    eD7B = 3;
+                    break;
+                case 31:
+                    eD7A = 9;
+                    eD7B = 3;
+                    break;
+                case 32:
+                    eD7A = 10;
+                    eD7B = 3;
+                    break;
+                case 33:
+                    eD7A = 11;
+                    eD7B = 3;
+                    break;
+                case 34:
+                    eD7A = 12;
+                    eD7B = 3;
+                    break;
+                case 35:
+                    eD7A = 13;
+                    eD7B = 3;
+                    break;
+                case 36:
+                    eD7A = 14;
+                    eD7B = 3;
+                    break;
+                case 37:
+                    eD7A = 15;
+                    eD7B = 3;
+                    break;
+                case 38:
+                    eD7A = 16;
+                    eD7B = 3;
+                    break;
+                case 39:
+                    eD7A = 17;
+                    eD7B = 3;
+                    break;
+                case 40:
+                    eD7A = 0;
+                    eD7B = 4;
+                    break;
+                case 41:
+                    eD7A = 1;
+                    eD7B = 4;
+                    break;
+                case 42:
+                    eD7A = 2;
+                    eD7B = 4;
+                    break;
+                case 43:
+                    eD7A = 3;
+                    eD7B = 4;
+                    break;
+                case 44:
+                    eD7A = 4;
+                    eD7B = 4;
+                    break;
+                case 45:
+                    eD7A = 5;
+                    eD7B = 4;
+                    break;
+                case 46:
+                    eD7A = 6;
+                    eD7B = 4;
+                    break;
+                case 47:
+                    eD7A = 7;
+                    eD7B = 4;
+                    break;
+                case 48:
+                    eD7A = 8;
+                    eD7B = 4;
+                    break;
+                case 49:
+                    eD7A = 9;
+                    eD7B = 4;
+                    break;
+                case 50:
+                    eD7A = 10;
+                    eD7B = 4;
+                    break;
+                case 51:
+                    eD7A = 11;
+                    eD7B = 4;
+                    break;
+                case 52:
+                    eD7A = 12;
+                    eD7B = 4;
+                    break;
+                case 53:
+                    eD7A = 13;
+                    eD7B = 4;
+                    break;
+                case 54:
+                    eD7A = 14;
+                    eD7B = 4;
+                    break;
+                case 55:
+                    eD7A = 0;
+                    eD7B = 5;
+                    break;
+                case 56:
+                    eD7A = 1;
+                    eD7B = 5;
+                    break;
+                case 57:
+                    eD7A = 2;
+                    eD7B = 5;
+                    break;
+                case 58:
+                    eD7A = 3;
+                    eD7B = 5;
+                    break;
+                case 59:
+                    eD7A = 4;
+                    eD7B = 5;
+                    break;
+                case 60:
+                    eD7A = 0;
+                    eD7B = 6;
+                    break;
+                case 61:
+                    eD7A = 1;
+                    eD7B = 6;
+                    break;
+                case 62:
+                    eD7A = 2;
+                    eD7B = 6;
+                    break;
+                case 63:
+                    eD7A = 0;
+                    eD7B = 7;
+                    break;
+                case 64:
+                    eD7A = 1;
+                    eD7B = 7;
+                    break;
+                case 65:
+                    eD7A = 2;
+                    eD7B = 7;
+                    break;
+                case 66:
+                    eD7A = 0;
+                    eD7B = 8;
+                    break;
+                case 67:
+                    eD7A = 0;
+                    eD7B = 9;
+                    break;
+                case 68:
+                    eD7A = 0;
+                    eD7B = 10;
+                    break;
+                case 69:
+                    eD7A = 0;
+                    eD7B = 11;
+                    break;
+                case 70:
+                    eD7A = 0;
+                    eD7B = 12;
+                    break;
+                case 71:
+                    eD7A = 0;
+                    eD7B = 13;
+                    break;
+                case 72:
+                    eD7A = 0;
+                    eD7B = 14;
+                    break;
+                case 73:
+                    eD7A = 0;
+                    eD7B = 15;
+                    break;
+                case 74:
+                    eD7A = 0;
+                    eD7B = 16;
+                    break;
+                case 75:
+                    eD7A = 0;
+                    eD7B = 17;
+                    break;
+                case 76:
+                    eD7A = 0;
+                    eD7B = 18;
+                    break;
+                default:
+                    eD7A = 0;
+                    eD7B = 0;
+                    break;
+            }
+
+            try
+            {
+                WriteByte(hProc, levelSelect1AddressGlobal, eD7A);
+                WriteByte(hProc, levelSelect2AddressGlobal, eD7B);
+            }
+            catch (Exception ex)
+            {
+                textBoxLog.AppendText("An error occurred setting Level Select."
+                    + Environment.NewLine
+                    + "Exception: "
+                    + ex);
+            }
+        }
+
+        #endregion
+
+        #region Debug Flags
+
+        public void SetDebug1Flags(object sender, EventArgs e)
+        {
+            BitArray bitArray = new BitArray(8);
+            byte[] debug1Bytes = new byte[1];
+
+            bitArray[0] = true ? checkBoxBit0.Checked : false;
+            bitArray[1] = true ? checkBoxBit1.Checked : false;
+            bitArray[2] = true ? checkBoxBit2.Checked : false;
+            bitArray[3] = true ? checkBoxBit3.Checked : false;
+            bitArray[4] = true ? checkBoxBit4.Checked : false;
+            bitArray[5] = true ? checkBoxBit5.Checked : false;
+            bitArray[6] = true ? checkBoxBit6.Checked : false;
+            bitArray[7] = true ? checkBoxBit7.Checked : false;
+
+            bitArray.CopyTo(debug1Bytes, 0);
+
+            try
+            {
+                WriteByte(hProc, debug1AddressGlobal, debug1Bytes[0]);
+            }
+            catch (Exception ex)
+            {
+                textBoxLog.AppendText("An error occurred setting Debug 1."
+                    + Environment.NewLine
+                    + "Exception: "
+                    + ex);
+            }
+        }
+
+        public void SetDebug2Flags(object sender, EventArgs e)
+        {
+            BitArray bitArray = new BitArray(8);
+            byte[] debug2Bytes = new byte[1];
+
+            bitArray[0] = true ? checkBoxBit8.Checked : false;
+            bitArray[1] = true ? checkBoxBit9.Checked : false;
+            bitArray[2] = true ? checkBoxBit10.Checked : false;
+            bitArray[3] = true ? checkBoxBit11.Checked : false;
+            bitArray[4] = true ? checkBoxBit12.Checked : false;
+            bitArray[5] = true ? checkBoxBit13.Checked : false;
+            bitArray[6] = true ? checkBoxBit14.Checked : false;
+            bitArray[7] = true ? checkBoxBit15.Checked : false;
+
+            bitArray.CopyTo(debug2Bytes, 0);
+
+            try
+            {
+                WriteByte(hProc, debug2AddressGlobal, debug2Bytes[0]);
+            }
+            catch (Exception ex)
+            {
+                textBoxLog.AppendText("An error occurred setting Debug 2."
+                    + Environment.NewLine
+                    + "Exception: "
+                    + ex);
+            }
+        }
+
+        #endregion
 
         #endregion
 

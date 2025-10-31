@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBoxGlobal = new System.Windows.Forms.GroupBox();
             this.textBoxContinueTimerWrite = new System.Windows.Forms.TextBox();
@@ -39,6 +40,10 @@
             this.labelContinueTimer = new System.Windows.Forms.Label();
             this.labelLevelTimer = new System.Windows.Forms.Label();
             this.groupBoxPlayer1 = new System.Windows.Forms.GroupBox();
+            this.comboBoxP1Score4 = new System.Windows.Forms.ComboBox();
+            this.comboBoxP1Score3 = new System.Windows.Forms.ComboBox();
+            this.comboBoxP1Score2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxP1Score1 = new System.Windows.Forms.ComboBox();
             this.comboBoxP1BombTypeWrite = new System.Windows.Forms.ComboBox();
             this.comboBoxP1WeaponTypeWrite = new System.Windows.Forms.ComboBox();
             this.comboBoxP1CurrentCharacterWrite = new System.Windows.Forms.ComboBox();
@@ -87,6 +92,10 @@
             this.comboBoxP1BombTypeRead = new System.Windows.Forms.ComboBox();
             this.comboBoxP1WeaponTypeRead = new System.Windows.Forms.ComboBox();
             this.groupBoxPlayer2 = new System.Windows.Forms.GroupBox();
+            this.comboBoxP2Score4 = new System.Windows.Forms.ComboBox();
+            this.comboBoxP2Score3 = new System.Windows.Forms.ComboBox();
+            this.comboBoxP2Score2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxP2Score1 = new System.Windows.Forms.ComboBox();
             this.comboBoxP2BombTypeWrite = new System.Windows.Forms.ComboBox();
             this.comboBoxP2WeaponTypeWrite = new System.Windows.Forms.ComboBox();
             this.comboBoxP2CurrentCharacterWrite = new System.Windows.Forms.ComboBox();
@@ -137,31 +146,47 @@
             this.groupBoxLog = new System.Windows.Forms.GroupBox();
             this.textBoxLog = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.comboBoxP1Score1 = new System.Windows.Forms.ComboBox();
-            this.comboBoxP1Score2 = new System.Windows.Forms.ComboBox();
-            this.comboBoxP1Score3 = new System.Windows.Forms.ComboBox();
-            this.comboBoxP1Score4 = new System.Windows.Forms.ComboBox();
-            this.comboBoxP2Score4 = new System.Windows.Forms.ComboBox();
-            this.comboBoxP2Score3 = new System.Windows.Forms.ComboBox();
-            this.comboBoxP2Score2 = new System.Windows.Forms.ComboBox();
-            this.comboBoxP2Score1 = new System.Windows.Forms.ComboBox();
             this.groupBoxOverride = new System.Windows.Forms.GroupBox();
-            this.textBoxProcessName = new System.Windows.Forms.TextBox();
-            this.textBoxModuleName = new System.Windows.Forms.TextBox();
-            this.labelProcessName = new System.Windows.Forms.Label();
-            this.labelModuleName = new System.Windows.Forms.Label();
-            this.checkBoxProcessName = new System.Windows.Forms.CheckBox();
             this.checkBoxModuleName = new System.Windows.Forms.CheckBox();
+            this.checkBoxProcessName = new System.Windows.Forms.CheckBox();
+            this.labelModuleName = new System.Windows.Forms.Label();
+            this.labelProcessName = new System.Windows.Forms.Label();
+            this.textBoxModuleName = new System.Windows.Forms.TextBox();
+            this.textBoxProcessName = new System.Windows.Forms.TextBox();
+            this.groupBoxDebug = new System.Windows.Forms.GroupBox();
+            this.checkBoxBit15 = new System.Windows.Forms.CheckBox();
+            this.checkBoxBit14 = new System.Windows.Forms.CheckBox();
+            this.checkBoxBit13 = new System.Windows.Forms.CheckBox();
+            this.checkBoxBit12 = new System.Windows.Forms.CheckBox();
+            this.checkBoxBit11 = new System.Windows.Forms.CheckBox();
+            this.checkBoxBit10 = new System.Windows.Forms.CheckBox();
+            this.checkBoxBit9 = new System.Windows.Forms.CheckBox();
+            this.checkBoxBit8 = new System.Windows.Forms.CheckBox();
+            this.checkBoxBit7 = new System.Windows.Forms.CheckBox();
+            this.checkBoxBit6 = new System.Windows.Forms.CheckBox();
+            this.checkBoxBit5 = new System.Windows.Forms.CheckBox();
+            this.checkBoxBit4 = new System.Windows.Forms.CheckBox();
+            this.checkBoxBit3 = new System.Windows.Forms.CheckBox();
+            this.checkBoxBit2 = new System.Windows.Forms.CheckBox();
+            this.checkBoxBit1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxBit0 = new System.Windows.Forms.CheckBox();
+            this.buttonLevelSelect = new System.Windows.Forms.Button();
+            this.labelLevelSelect = new System.Windows.Forms.Label();
+            this.comboBoxLevelSelect = new System.Windows.Forms.ComboBox();
+            this.buttonMissionCommplete = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBoxGlobal.SuspendLayout();
             this.groupBoxPlayer1.SuspendLayout();
             this.groupBoxPlayer2.SuspendLayout();
             this.groupBoxLog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBoxOverride.SuspendLayout();
+            this.groupBoxDebug.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxGlobal
             // 
+            this.groupBoxGlobal.Controls.Add(this.buttonMissionCommplete);
             this.groupBoxGlobal.Controls.Add(this.textBoxContinueTimerWrite);
             this.groupBoxGlobal.Controls.Add(this.textBoxLevelTimerWrite);
             this.groupBoxGlobal.Controls.Add(this.textBoxContinueTimerRead);
@@ -172,7 +197,7 @@
             this.groupBoxGlobal.Controls.Add(this.labelLevelTimer);
             this.groupBoxGlobal.Location = new System.Drawing.Point(12, 12);
             this.groupBoxGlobal.Name = "groupBoxGlobal";
-            this.groupBoxGlobal.Size = new System.Drawing.Size(250, 82);
+            this.groupBoxGlobal.Size = new System.Drawing.Size(250, 108);
             this.groupBoxGlobal.TabIndex = 0;
             this.groupBoxGlobal.TabStop = false;
             this.groupBoxGlobal.Text = "Global";
@@ -300,6 +325,38 @@
             this.groupBoxPlayer1.TabIndex = 1;
             this.groupBoxPlayer1.TabStop = false;
             this.groupBoxPlayer1.Text = "Player 1";
+            // 
+            // comboBoxP1Score4
+            // 
+            this.comboBoxP1Score4.FormattingEnabled = true;
+            this.comboBoxP1Score4.Location = new System.Drawing.Point(184, 258);
+            this.comboBoxP1Score4.Name = "comboBoxP1Score4";
+            this.comboBoxP1Score4.Size = new System.Drawing.Size(42, 21);
+            this.comboBoxP1Score4.TabIndex = 68;
+            // 
+            // comboBoxP1Score3
+            // 
+            this.comboBoxP1Score3.FormattingEnabled = true;
+            this.comboBoxP1Score3.Location = new System.Drawing.Point(136, 258);
+            this.comboBoxP1Score3.Name = "comboBoxP1Score3";
+            this.comboBoxP1Score3.Size = new System.Drawing.Size(42, 21);
+            this.comboBoxP1Score3.TabIndex = 67;
+            // 
+            // comboBoxP1Score2
+            // 
+            this.comboBoxP1Score2.FormattingEnabled = true;
+            this.comboBoxP1Score2.Location = new System.Drawing.Point(88, 258);
+            this.comboBoxP1Score2.Name = "comboBoxP1Score2";
+            this.comboBoxP1Score2.Size = new System.Drawing.Size(42, 21);
+            this.comboBoxP1Score2.TabIndex = 66;
+            // 
+            // comboBoxP1Score1
+            // 
+            this.comboBoxP1Score1.FormattingEnabled = true;
+            this.comboBoxP1Score1.Location = new System.Drawing.Point(40, 258);
+            this.comboBoxP1Score1.Name = "comboBoxP1Score1";
+            this.comboBoxP1Score1.Size = new System.Drawing.Size(42, 21);
+            this.comboBoxP1Score1.TabIndex = 65;
             // 
             // comboBoxP1BombTypeWrite
             // 
@@ -744,6 +801,38 @@
             this.groupBoxPlayer2.TabStop = false;
             this.groupBoxPlayer2.Text = "Player 2";
             // 
+            // comboBoxP2Score4
+            // 
+            this.comboBoxP2Score4.FormattingEnabled = true;
+            this.comboBoxP2Score4.Location = new System.Drawing.Point(181, 258);
+            this.comboBoxP2Score4.Name = "comboBoxP2Score4";
+            this.comboBoxP2Score4.Size = new System.Drawing.Size(42, 21);
+            this.comboBoxP2Score4.TabIndex = 84;
+            // 
+            // comboBoxP2Score3
+            // 
+            this.comboBoxP2Score3.FormattingEnabled = true;
+            this.comboBoxP2Score3.Location = new System.Drawing.Point(133, 258);
+            this.comboBoxP2Score3.Name = "comboBoxP2Score3";
+            this.comboBoxP2Score3.Size = new System.Drawing.Size(42, 21);
+            this.comboBoxP2Score3.TabIndex = 83;
+            // 
+            // comboBoxP2Score2
+            // 
+            this.comboBoxP2Score2.FormattingEnabled = true;
+            this.comboBoxP2Score2.Location = new System.Drawing.Point(85, 258);
+            this.comboBoxP2Score2.Name = "comboBoxP2Score2";
+            this.comboBoxP2Score2.Size = new System.Drawing.Size(42, 21);
+            this.comboBoxP2Score2.TabIndex = 82;
+            // 
+            // comboBoxP2Score1
+            // 
+            this.comboBoxP2Score1.FormattingEnabled = true;
+            this.comboBoxP2Score1.Location = new System.Drawing.Point(37, 258);
+            this.comboBoxP2Score1.Name = "comboBoxP2Score1";
+            this.comboBoxP2Score1.Size = new System.Drawing.Size(42, 21);
+            this.comboBoxP2Score1.TabIndex = 81;
+            // 
             // comboBoxP2BombTypeWrite
             // 
             this.comboBoxP2BombTypeWrite.FormattingEnabled = true;
@@ -1130,9 +1219,9 @@
             // groupBoxLog
             // 
             this.groupBoxLog.Controls.Add(this.textBoxLog);
-            this.groupBoxLog.Location = new System.Drawing.Point(12, 100);
+            this.groupBoxLog.Location = new System.Drawing.Point(12, 405);
             this.groupBoxLog.Name = "groupBoxLog";
-            this.groupBoxLog.Size = new System.Drawing.Size(250, 449);
+            this.groupBoxLog.Size = new System.Drawing.Size(250, 144);
             this.groupBoxLog.TabIndex = 3;
             this.groupBoxLog.TabStop = false;
             this.groupBoxLog.Text = "Log";
@@ -1143,7 +1232,7 @@
             this.textBoxLog.Multiline = true;
             this.textBoxLog.Name = "textBoxLog";
             this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxLog.Size = new System.Drawing.Size(235, 424);
+            this.textBoxLog.Size = new System.Drawing.Size(235, 119);
             this.textBoxLog.TabIndex = 0;
             // 
             // pictureBox1
@@ -1155,70 +1244,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
-            // 
-            // comboBoxP1Score1
-            // 
-            this.comboBoxP1Score1.FormattingEnabled = true;
-            this.comboBoxP1Score1.Location = new System.Drawing.Point(40, 258);
-            this.comboBoxP1Score1.Name = "comboBoxP1Score1";
-            this.comboBoxP1Score1.Size = new System.Drawing.Size(42, 21);
-            this.comboBoxP1Score1.TabIndex = 65;
-            // 
-            // comboBoxP1Score2
-            // 
-            this.comboBoxP1Score2.FormattingEnabled = true;
-            this.comboBoxP1Score2.Location = new System.Drawing.Point(88, 258);
-            this.comboBoxP1Score2.Name = "comboBoxP1Score2";
-            this.comboBoxP1Score2.Size = new System.Drawing.Size(42, 21);
-            this.comboBoxP1Score2.TabIndex = 66;
-            // 
-            // comboBoxP1Score3
-            // 
-            this.comboBoxP1Score3.FormattingEnabled = true;
-            this.comboBoxP1Score3.Location = new System.Drawing.Point(136, 258);
-            this.comboBoxP1Score3.Name = "comboBoxP1Score3";
-            this.comboBoxP1Score3.Size = new System.Drawing.Size(42, 21);
-            this.comboBoxP1Score3.TabIndex = 67;
-            // 
-            // comboBoxP1Score4
-            // 
-            this.comboBoxP1Score4.FormattingEnabled = true;
-            this.comboBoxP1Score4.Location = new System.Drawing.Point(184, 258);
-            this.comboBoxP1Score4.Name = "comboBoxP1Score4";
-            this.comboBoxP1Score4.Size = new System.Drawing.Size(42, 21);
-            this.comboBoxP1Score4.TabIndex = 68;
-            // 
-            // comboBoxP2Score4
-            // 
-            this.comboBoxP2Score4.FormattingEnabled = true;
-            this.comboBoxP2Score4.Location = new System.Drawing.Point(181, 258);
-            this.comboBoxP2Score4.Name = "comboBoxP2Score4";
-            this.comboBoxP2Score4.Size = new System.Drawing.Size(42, 21);
-            this.comboBoxP2Score4.TabIndex = 84;
-            // 
-            // comboBoxP2Score3
-            // 
-            this.comboBoxP2Score3.FormattingEnabled = true;
-            this.comboBoxP2Score3.Location = new System.Drawing.Point(133, 258);
-            this.comboBoxP2Score3.Name = "comboBoxP2Score3";
-            this.comboBoxP2Score3.Size = new System.Drawing.Size(42, 21);
-            this.comboBoxP2Score3.TabIndex = 83;
-            // 
-            // comboBoxP2Score2
-            // 
-            this.comboBoxP2Score2.FormattingEnabled = true;
-            this.comboBoxP2Score2.Location = new System.Drawing.Point(85, 258);
-            this.comboBoxP2Score2.Name = "comboBoxP2Score2";
-            this.comboBoxP2Score2.Size = new System.Drawing.Size(42, 21);
-            this.comboBoxP2Score2.TabIndex = 82;
-            // 
-            // comboBoxP2Score1
-            // 
-            this.comboBoxP2Score1.FormattingEnabled = true;
-            this.comboBoxP2Score1.Location = new System.Drawing.Point(37, 258);
-            this.comboBoxP2Score1.Name = "comboBoxP2Score1";
-            this.comboBoxP2Score1.Size = new System.Drawing.Size(42, 21);
-            this.comboBoxP2Score1.TabIndex = 81;
             // 
             // groupBoxOverride
             // 
@@ -1235,37 +1260,14 @@
             this.groupBoxOverride.TabStop = false;
             this.groupBoxOverride.Text = "Override Process";
             // 
-            // textBoxProcessName
+            // checkBoxModuleName
             // 
-            this.textBoxProcessName.Location = new System.Drawing.Point(102, 19);
-            this.textBoxProcessName.Name = "textBoxProcessName";
-            this.textBoxProcessName.Size = new System.Drawing.Size(100, 20);
-            this.textBoxProcessName.TabIndex = 0;
-            // 
-            // textBoxModuleName
-            // 
-            this.textBoxModuleName.Location = new System.Drawing.Point(102, 45);
-            this.textBoxModuleName.Name = "textBoxModuleName";
-            this.textBoxModuleName.Size = new System.Drawing.Size(100, 20);
-            this.textBoxModuleName.TabIndex = 1;
-            // 
-            // labelProcessName
-            // 
-            this.labelProcessName.AutoSize = true;
-            this.labelProcessName.Location = new System.Drawing.Point(6, 22);
-            this.labelProcessName.Name = "labelProcessName";
-            this.labelProcessName.Size = new System.Drawing.Size(79, 13);
-            this.labelProcessName.TabIndex = 2;
-            this.labelProcessName.Text = "Process Name:";
-            // 
-            // labelModuleName
-            // 
-            this.labelModuleName.AutoSize = true;
-            this.labelModuleName.Location = new System.Drawing.Point(6, 48);
-            this.labelModuleName.Name = "labelModuleName";
-            this.labelModuleName.Size = new System.Drawing.Size(76, 13);
-            this.labelModuleName.TabIndex = 3;
-            this.labelModuleName.Text = "Module Name:";
+            this.checkBoxModuleName.AutoSize = true;
+            this.checkBoxModuleName.Location = new System.Drawing.Point(229, 48);
+            this.checkBoxModuleName.Name = "checkBoxModuleName";
+            this.checkBoxModuleName.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxModuleName.TabIndex = 5;
+            this.checkBoxModuleName.UseVisualStyleBackColor = true;
             // 
             // checkBoxProcessName
             // 
@@ -1276,20 +1278,284 @@
             this.checkBoxProcessName.TabIndex = 4;
             this.checkBoxProcessName.UseVisualStyleBackColor = true;
             // 
-            // checkBoxModuleName
+            // labelModuleName
             // 
-            this.checkBoxModuleName.AutoSize = true;
-            this.checkBoxModuleName.Location = new System.Drawing.Point(229, 48);
-            this.checkBoxModuleName.Name = "checkBoxModuleName";
-            this.checkBoxModuleName.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxModuleName.TabIndex = 5;
-            this.checkBoxModuleName.UseVisualStyleBackColor = true;
+            this.labelModuleName.AutoSize = true;
+            this.labelModuleName.Location = new System.Drawing.Point(6, 48);
+            this.labelModuleName.Name = "labelModuleName";
+            this.labelModuleName.Size = new System.Drawing.Size(76, 13);
+            this.labelModuleName.TabIndex = 3;
+            this.labelModuleName.Text = "Module Name:";
+            // 
+            // labelProcessName
+            // 
+            this.labelProcessName.AutoSize = true;
+            this.labelProcessName.Location = new System.Drawing.Point(6, 22);
+            this.labelProcessName.Name = "labelProcessName";
+            this.labelProcessName.Size = new System.Drawing.Size(79, 13);
+            this.labelProcessName.TabIndex = 2;
+            this.labelProcessName.Text = "Process Name:";
+            // 
+            // textBoxModuleName
+            // 
+            this.textBoxModuleName.Location = new System.Drawing.Point(102, 45);
+            this.textBoxModuleName.Name = "textBoxModuleName";
+            this.textBoxModuleName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxModuleName.TabIndex = 1;
+            // 
+            // textBoxProcessName
+            // 
+            this.textBoxProcessName.Location = new System.Drawing.Point(102, 19);
+            this.textBoxProcessName.Name = "textBoxProcessName";
+            this.textBoxProcessName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxProcessName.TabIndex = 0;
+            // 
+            // groupBoxDebug
+            // 
+            this.groupBoxDebug.Controls.Add(this.checkBoxBit15);
+            this.groupBoxDebug.Controls.Add(this.checkBoxBit14);
+            this.groupBoxDebug.Controls.Add(this.checkBoxBit13);
+            this.groupBoxDebug.Controls.Add(this.checkBoxBit12);
+            this.groupBoxDebug.Controls.Add(this.checkBoxBit11);
+            this.groupBoxDebug.Controls.Add(this.checkBoxBit10);
+            this.groupBoxDebug.Controls.Add(this.checkBoxBit9);
+            this.groupBoxDebug.Controls.Add(this.checkBoxBit8);
+            this.groupBoxDebug.Controls.Add(this.checkBoxBit7);
+            this.groupBoxDebug.Controls.Add(this.checkBoxBit6);
+            this.groupBoxDebug.Controls.Add(this.checkBoxBit5);
+            this.groupBoxDebug.Controls.Add(this.checkBoxBit4);
+            this.groupBoxDebug.Controls.Add(this.checkBoxBit3);
+            this.groupBoxDebug.Controls.Add(this.checkBoxBit2);
+            this.groupBoxDebug.Controls.Add(this.checkBoxBit1);
+            this.groupBoxDebug.Controls.Add(this.checkBoxBit0);
+            this.groupBoxDebug.Controls.Add(this.buttonLevelSelect);
+            this.groupBoxDebug.Controls.Add(this.labelLevelSelect);
+            this.groupBoxDebug.Controls.Add(this.comboBoxLevelSelect);
+            this.groupBoxDebug.Location = new System.Drawing.Point(12, 126);
+            this.groupBoxDebug.Name = "groupBoxDebug";
+            this.groupBoxDebug.Size = new System.Drawing.Size(250, 273);
+            this.groupBoxDebug.TabIndex = 13;
+            this.groupBoxDebug.TabStop = false;
+            this.groupBoxDebug.Text = "Debug";
+            // 
+            // checkBoxBit15
+            // 
+            this.checkBoxBit15.AutoSize = true;
+            this.checkBoxBit15.Location = new System.Drawing.Point(128, 244);
+            this.checkBoxBit15.Name = "checkBoxBit15";
+            this.checkBoxBit15.Size = new System.Drawing.Size(53, 17);
+            this.checkBoxBit15.TabIndex = 31;
+            this.checkBoxBit15.Text = "Bit 15";
+            this.checkBoxBit15.UseVisualStyleBackColor = true;
+            this.checkBoxBit15.CheckedChanged += new System.EventHandler(this.SetDebug2Flags);
+            // 
+            // checkBoxBit14
+            // 
+            this.checkBoxBit14.AutoSize = true;
+            this.checkBoxBit14.Location = new System.Drawing.Point(128, 221);
+            this.checkBoxBit14.Name = "checkBoxBit14";
+            this.checkBoxBit14.Size = new System.Drawing.Size(53, 17);
+            this.checkBoxBit14.TabIndex = 30;
+            this.checkBoxBit14.Text = "Bit 14";
+            this.checkBoxBit14.UseVisualStyleBackColor = true;
+            this.checkBoxBit14.CheckedChanged += new System.EventHandler(this.SetDebug2Flags);
+            // 
+            // checkBoxBit13
+            // 
+            this.checkBoxBit13.AutoSize = true;
+            this.checkBoxBit13.Location = new System.Drawing.Point(128, 198);
+            this.checkBoxBit13.Name = "checkBoxBit13";
+            this.checkBoxBit13.Size = new System.Drawing.Size(53, 17);
+            this.checkBoxBit13.TabIndex = 29;
+            this.checkBoxBit13.Text = "Bit 13";
+            this.checkBoxBit13.UseVisualStyleBackColor = true;
+            this.checkBoxBit13.CheckedChanged += new System.EventHandler(this.SetDebug2Flags);
+            // 
+            // checkBoxBit12
+            // 
+            this.checkBoxBit12.AutoSize = true;
+            this.checkBoxBit12.Location = new System.Drawing.Point(128, 175);
+            this.checkBoxBit12.Name = "checkBoxBit12";
+            this.checkBoxBit12.Size = new System.Drawing.Size(53, 17);
+            this.checkBoxBit12.TabIndex = 28;
+            this.checkBoxBit12.Text = "Bit 12";
+            this.checkBoxBit12.UseVisualStyleBackColor = true;
+            this.checkBoxBit12.CheckedChanged += new System.EventHandler(this.SetDebug2Flags);
+            // 
+            // checkBoxBit11
+            // 
+            this.checkBoxBit11.AutoSize = true;
+            this.checkBoxBit11.Location = new System.Drawing.Point(128, 152);
+            this.checkBoxBit11.Name = "checkBoxBit11";
+            this.checkBoxBit11.Size = new System.Drawing.Size(53, 17);
+            this.checkBoxBit11.TabIndex = 27;
+            this.checkBoxBit11.Text = "Bit 11";
+            this.checkBoxBit11.UseVisualStyleBackColor = true;
+            this.checkBoxBit11.CheckedChanged += new System.EventHandler(this.SetDebug2Flags);
+            // 
+            // checkBoxBit10
+            // 
+            this.checkBoxBit10.AutoSize = true;
+            this.checkBoxBit10.Location = new System.Drawing.Point(128, 129);
+            this.checkBoxBit10.Name = "checkBoxBit10";
+            this.checkBoxBit10.Size = new System.Drawing.Size(53, 17);
+            this.checkBoxBit10.TabIndex = 26;
+            this.checkBoxBit10.Text = "Bit 10";
+            this.checkBoxBit10.UseVisualStyleBackColor = true;
+            this.checkBoxBit10.CheckedChanged += new System.EventHandler(this.SetDebug2Flags);
+            // 
+            // checkBoxBit9
+            // 
+            this.checkBoxBit9.AutoSize = true;
+            this.checkBoxBit9.Location = new System.Drawing.Point(128, 106);
+            this.checkBoxBit9.Name = "checkBoxBit9";
+            this.checkBoxBit9.Size = new System.Drawing.Size(47, 17);
+            this.checkBoxBit9.TabIndex = 25;
+            this.checkBoxBit9.Text = "Bit 9";
+            this.checkBoxBit9.UseVisualStyleBackColor = true;
+            this.checkBoxBit9.CheckedChanged += new System.EventHandler(this.SetDebug2Flags);
+            // 
+            // checkBoxBit8
+            // 
+            this.checkBoxBit8.AutoSize = true;
+            this.checkBoxBit8.Location = new System.Drawing.Point(128, 83);
+            this.checkBoxBit8.Name = "checkBoxBit8";
+            this.checkBoxBit8.Size = new System.Drawing.Size(47, 17);
+            this.checkBoxBit8.TabIndex = 24;
+            this.checkBoxBit8.Text = "Bit 8";
+            this.checkBoxBit8.UseVisualStyleBackColor = true;
+            this.checkBoxBit8.CheckedChanged += new System.EventHandler(this.SetDebug2Flags);
+            // 
+            // checkBoxBit7
+            // 
+            this.checkBoxBit7.AutoSize = true;
+            this.checkBoxBit7.Location = new System.Drawing.Point(9, 244);
+            this.checkBoxBit7.Name = "checkBoxBit7";
+            this.checkBoxBit7.Size = new System.Drawing.Size(47, 17);
+            this.checkBoxBit7.TabIndex = 23;
+            this.checkBoxBit7.Text = "Bit 7";
+            this.checkBoxBit7.UseVisualStyleBackColor = true;
+            this.checkBoxBit7.CheckedChanged += new System.EventHandler(this.SetDebug1Flags);
+            // 
+            // checkBoxBit6
+            // 
+            this.checkBoxBit6.AutoSize = true;
+            this.checkBoxBit6.Location = new System.Drawing.Point(9, 221);
+            this.checkBoxBit6.Name = "checkBoxBit6";
+            this.checkBoxBit6.Size = new System.Drawing.Size(47, 17);
+            this.checkBoxBit6.TabIndex = 22;
+            this.checkBoxBit6.Text = "Bit 6";
+            this.checkBoxBit6.UseVisualStyleBackColor = true;
+            this.checkBoxBit6.CheckedChanged += new System.EventHandler(this.SetDebug1Flags);
+            // 
+            // checkBoxBit5
+            // 
+            this.checkBoxBit5.AutoSize = true;
+            this.checkBoxBit5.Location = new System.Drawing.Point(9, 198);
+            this.checkBoxBit5.Name = "checkBoxBit5";
+            this.checkBoxBit5.Size = new System.Drawing.Size(47, 17);
+            this.checkBoxBit5.TabIndex = 21;
+            this.checkBoxBit5.Text = "Bit 5";
+            this.checkBoxBit5.UseVisualStyleBackColor = true;
+            this.checkBoxBit5.CheckedChanged += new System.EventHandler(this.SetDebug1Flags);
+            // 
+            // checkBoxBit4
+            // 
+            this.checkBoxBit4.AutoSize = true;
+            this.checkBoxBit4.Location = new System.Drawing.Point(9, 175);
+            this.checkBoxBit4.Name = "checkBoxBit4";
+            this.checkBoxBit4.Size = new System.Drawing.Size(47, 17);
+            this.checkBoxBit4.TabIndex = 20;
+            this.checkBoxBit4.Text = "Bit 4";
+            this.checkBoxBit4.UseVisualStyleBackColor = true;
+            this.checkBoxBit4.CheckedChanged += new System.EventHandler(this.SetDebug1Flags);
+            // 
+            // checkBoxBit3
+            // 
+            this.checkBoxBit3.AutoSize = true;
+            this.checkBoxBit3.Location = new System.Drawing.Point(9, 152);
+            this.checkBoxBit3.Name = "checkBoxBit3";
+            this.checkBoxBit3.Size = new System.Drawing.Size(47, 17);
+            this.checkBoxBit3.TabIndex = 19;
+            this.checkBoxBit3.Text = "Bit 3";
+            this.checkBoxBit3.UseVisualStyleBackColor = true;
+            this.checkBoxBit3.CheckedChanged += new System.EventHandler(this.SetDebug1Flags);
+            // 
+            // checkBoxBit2
+            // 
+            this.checkBoxBit2.AutoSize = true;
+            this.checkBoxBit2.Location = new System.Drawing.Point(9, 129);
+            this.checkBoxBit2.Name = "checkBoxBit2";
+            this.checkBoxBit2.Size = new System.Drawing.Size(47, 17);
+            this.checkBoxBit2.TabIndex = 18;
+            this.checkBoxBit2.Text = "Bit 2";
+            this.checkBoxBit2.UseVisualStyleBackColor = true;
+            this.checkBoxBit2.CheckedChanged += new System.EventHandler(this.SetDebug1Flags);
+            // 
+            // checkBoxBit1
+            // 
+            this.checkBoxBit1.AutoSize = true;
+            this.checkBoxBit1.Location = new System.Drawing.Point(9, 106);
+            this.checkBoxBit1.Name = "checkBoxBit1";
+            this.checkBoxBit1.Size = new System.Drawing.Size(47, 17);
+            this.checkBoxBit1.TabIndex = 17;
+            this.checkBoxBit1.Text = "Bit 1";
+            this.checkBoxBit1.UseVisualStyleBackColor = true;
+            this.checkBoxBit1.CheckedChanged += new System.EventHandler(this.SetDebug1Flags);
+            // 
+            // checkBoxBit0
+            // 
+            this.checkBoxBit0.AutoSize = true;
+            this.checkBoxBit0.Location = new System.Drawing.Point(9, 83);
+            this.checkBoxBit0.Name = "checkBoxBit0";
+            this.checkBoxBit0.Size = new System.Drawing.Size(47, 17);
+            this.checkBoxBit0.TabIndex = 16;
+            this.checkBoxBit0.Text = "Bit 0";
+            this.checkBoxBit0.UseVisualStyleBackColor = true;
+            this.checkBoxBit0.CheckedChanged += new System.EventHandler(this.SetDebug1Flags);
+            // 
+            // buttonLevelSelect
+            // 
+            this.buttonLevelSelect.Location = new System.Drawing.Point(93, 43);
+            this.buttonLevelSelect.Name = "buttonLevelSelect";
+            this.buttonLevelSelect.Size = new System.Drawing.Size(142, 23);
+            this.buttonLevelSelect.TabIndex = 15;
+            this.buttonLevelSelect.Text = "Select";
+            this.buttonLevelSelect.UseVisualStyleBackColor = true;
+            // 
+            // labelLevelSelect
+            // 
+            this.labelLevelSelect.AutoSize = true;
+            this.labelLevelSelect.Location = new System.Drawing.Point(6, 19);
+            this.labelLevelSelect.Name = "labelLevelSelect";
+            this.labelLevelSelect.Size = new System.Drawing.Size(69, 13);
+            this.labelLevelSelect.TabIndex = 14;
+            this.labelLevelSelect.Text = "Level Select:";
+            // 
+            // comboBoxLevelSelect
+            // 
+            this.comboBoxLevelSelect.DropDownWidth = 350;
+            this.comboBoxLevelSelect.FormattingEnabled = true;
+            this.comboBoxLevelSelect.Location = new System.Drawing.Point(93, 16);
+            this.comboBoxLevelSelect.Name = "comboBoxLevelSelect";
+            this.comboBoxLevelSelect.Size = new System.Drawing.Size(142, 21);
+            this.comboBoxLevelSelect.TabIndex = 13;
+            // 
+            // buttonMissionCommplete
+            // 
+            this.buttonMissionCommplete.Location = new System.Drawing.Point(93, 72);
+            this.buttonMissionCommplete.Name = "buttonMissionCommplete";
+            this.buttonMissionCommplete.Size = new System.Drawing.Size(142, 23);
+            this.buttonMissionCommplete.TabIndex = 14;
+            this.buttonMissionCommplete.Text = "Mission Complete";
+            this.buttonMissionCommplete.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.groupBoxDebug);
             this.Controls.Add(this.groupBoxOverride);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBoxLog);
@@ -1311,6 +1577,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBoxOverride.ResumeLayout(false);
             this.groupBoxOverride.PerformLayout();
+            this.groupBoxDebug.ResumeLayout(false);
+            this.groupBoxDebug.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1440,6 +1708,28 @@
         private System.Windows.Forms.Label labelProcessName;
         private System.Windows.Forms.TextBox textBoxModuleName;
         private System.Windows.Forms.TextBox textBoxProcessName;
+        private System.Windows.Forms.Button buttonMissionCommplete;
+        private System.Windows.Forms.GroupBox groupBoxDebug;
+        private System.Windows.Forms.CheckBox checkBoxBit15;
+        private System.Windows.Forms.CheckBox checkBoxBit14;
+        private System.Windows.Forms.CheckBox checkBoxBit13;
+        private System.Windows.Forms.CheckBox checkBoxBit12;
+        private System.Windows.Forms.CheckBox checkBoxBit11;
+        private System.Windows.Forms.CheckBox checkBoxBit10;
+        private System.Windows.Forms.CheckBox checkBoxBit9;
+        private System.Windows.Forms.CheckBox checkBoxBit8;
+        private System.Windows.Forms.CheckBox checkBoxBit7;
+        private System.Windows.Forms.CheckBox checkBoxBit6;
+        private System.Windows.Forms.CheckBox checkBoxBit5;
+        private System.Windows.Forms.CheckBox checkBoxBit4;
+        private System.Windows.Forms.CheckBox checkBoxBit3;
+        private System.Windows.Forms.CheckBox checkBoxBit2;
+        private System.Windows.Forms.CheckBox checkBoxBit1;
+        private System.Windows.Forms.CheckBox checkBoxBit0;
+        private System.Windows.Forms.Button buttonLevelSelect;
+        private System.Windows.Forms.Label labelLevelSelect;
+        private System.Windows.Forms.ComboBox comboBoxLevelSelect;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
