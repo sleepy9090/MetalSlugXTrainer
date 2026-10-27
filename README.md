@@ -1,6 +1,6 @@
 A game trainer for Metal Slug X (GOG Version, setup_metal_slug_x_gog-6_(12442)).
 
-<img width="786" height="593" alt="image" src="https://github.com/user-attachments/assets/fcf5f503-577d-4587-ad8a-13ecd4988137" />
+<img width="786" height="593" alt="image" src="https://github.com/user-attachments/assets/807746ff-d3b3-426a-af4c-0bf59cf57486" />
 
 <img width="1368" height="800" alt="image" src="https://github.com/user-attachments/assets/900cd1aa-e78f-49e3-b73c-206aecdfec14" />
 
